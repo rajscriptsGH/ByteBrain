@@ -36,3 +36,38 @@ bytebrain/
 ├── docs/            # Design, planning, schema
 └── README.md
 
+```
+
+## 🧑‍💻 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/bytebrain.git
+cd bytebrain
+```
+
+### 2. Set Up the Backend
+
+```bash
+cd server
+npm install
+cp .env.example .env  # Add your environment variables
+npm run dev
+```
+
+### 3. Set Up the Frontend
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+### 🛡️ .env Example (Server)
+
+```ini
+PORT=5000
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/bytebrain
+JWT_SECRET=your_jwt_secret_key
+```
