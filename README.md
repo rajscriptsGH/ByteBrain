@@ -31,8 +31,8 @@
 
 ```bash
 bytebrain/
-├── client/          # React frontend
-├── server/          # Node + Express backend
+├── frontend/          # React + Tailwind frontend
+├── backend/          # Node + Express backend
 └── README.md
 
 ```
@@ -49,7 +49,7 @@ cd bytebrain
 ### 2. Set Up the Backend
 
 ```bash
-cd server
+cd backend
 npm install
 cp .env.example .env  # Add your environment variables
 npm run dev
@@ -58,7 +58,7 @@ npm run dev
 ### 3. Set Up the Frontend
 
 ```bash
-cd client
+cd frontend
 npm install
 npm run dev
 ```
