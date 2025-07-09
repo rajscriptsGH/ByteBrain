@@ -33,7 +33,6 @@
 bytebrain/
 ├── client/          # React frontend
 ├── server/          # Node + Express backend
-├── docs/            # Design, planning, schema
 └── README.md
 
 ```
@@ -43,7 +42,7 @@ bytebrain/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/bytebrain.git
+git clone https://github.com/rajyadav63/bytebrain.git
 cd bytebrain
 ```
 
