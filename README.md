@@ -71,3 +71,32 @@ PORT=5000
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/bytebrain
 JWT_SECRET=your_jwt_secret_key
 ```
+
+## 🙌 Contributing
+
+- Contributions, issues, and feature requests are welcome!
+Feel free to fork this repo and submit a pull request.
+
+## 📄 License
+
+MIT License © rajyadav63
+
+## 🔗 Links
+
+```css
+Frontend Repo (soon)
+```
+
+```css
+Live Demo (soon)
+```
+
+```yarn
+Let me know if:
+
+- You want it in **monorepo** or split frontend/backend
+- You’d like a **logo or landing page**
+- You want this README in a downloadable `.md` file
+
+Ready to help you scaffold the project if you like!
+```
