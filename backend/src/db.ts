@@ -1,6 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
 
-mongoose.connect('process.env.MONGODB_URI')
+mongoose.connect('mongodb://localhost:27017/ByteBrain')
 
 const UserSchema = new Schema({
     username: { type: String, unique: true, require: true },

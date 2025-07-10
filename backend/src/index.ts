@@ -1,5 +1,6 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
+import { UserModel } from './db'
 const app = express()
 
 const port = process.env.MONGODB_URL || 3300
@@ -8,7 +9,7 @@ app.use(express.json())
 
 
 app.post('/api/v1/signup/', async (req, res) => {
-    //use zod and hash password
+    //use zod 
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -21,6 +22,19 @@ app.post('/api/v1/signup/', async (req, res) => {
     const salt = await bcrypt.genSalt(5);
     const hashPassword = await bcrypt.hash(password, salt);
 
+    const userData = {
+        username: username,
+        password: password
+    }
+
+    await UserModel.create({
+        username: username,
+        password: password
+    })
+
+    res.status(502).json({
+        msg: "Signed up"
+    })
 
 
 
