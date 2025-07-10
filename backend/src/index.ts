@@ -1,13 +1,12 @@
 import express from 'express'
-import jwt from 'jsonwebtoken'
-import mongoose from 'mongoose'
-
-const port = 33000
-
 const app = express()
 
-app.post('/api/v1/signup/', (req, res) => {
+const port = process.env.MONGODB_URL || 3300
 
+app.use(express.json())
+
+app.post('/api/v1/signup/', (req, res) => {
+    const { username, password } = req.body;
 })
 app.post('/api/v1/signin/', (req, res) => {
 
@@ -34,3 +33,4 @@ app.listen(port, () => {
     console.log(`Server is running at port: ${port}`);
 
 })
+
