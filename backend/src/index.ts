@@ -1,31 +1,34 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
-import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
 import { UserModel } from './db'
+import dotenv from 'dotenv'
 
 dotenv.config()
 const app = express()
-const port = 3300
-
 app.use(express.json())
+const JWT_SECRET = process.env.JWT_SECRET || 'kjdshfjkshdfsf'
+
+const port = process.env.port || 3300
 
 
+//signup route
 app.post('/api/v1/signup/', async (req, res) => {
     //use zod 
     const { username, password } = req.body;
 
     if (!username || !password) {
-        return res.status(411).json({
-            msg: "Wrong credentials"
+        return res.status(400).json({
+            msg: "Missing inputs"
         })
     }
 
-    //hash password
-    const salt = await bcrypt.genSalt(5);
-    const hashPassword = await bcrypt.hash(password, salt);
-
     try {
+        //hash password
+        const salt = await bcrypt.genSalt(5);
+        const hashPassword = await bcrypt.hash(password, salt);
+
         await UserModel.create({
             username: username,
             password: hashPassword
@@ -52,8 +55,53 @@ app.post('/api/v1/signup/', async (req, res) => {
 
 })
 
-app.post('/api/v1/signin/', (req, res) => {
+app.post('/api/v1/signin/', async (req, res) => {
+    try {
+        const username = req.body.username
+        const password = req.body.password
 
+        if (!username || !password) {
+            return res.status(401).json({
+                msg: "username & password required"
+            })
+        }
+
+        const user = await UserModel.findOne({
+            username
+        })
+
+        if (!user) {
+            return res.status(404).json({
+                msg: "User not found"
+            })
+        }
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password)
+
+        if (!isPasswordCorrect) {
+            return res.status(401).json({
+                msg: "Invalid password"
+            })
+        }
+
+        const token = jwt.sign({
+            id: user._id,
+            username: user.username
+        }, JWT_SECRET)
+
+        return res.status(200).json({
+            msg: "Login successful",
+            token,
+        });
+
+    } catch (error) {
+        console.log("Signin error");
+
+        return res.status(411).json({
+            msg: "Something went wrong",
+            error: error
+        })
+    }
 })
 app.post('/api/v1/content/', (req, res) => {
 
