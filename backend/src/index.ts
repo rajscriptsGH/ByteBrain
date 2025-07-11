@@ -131,8 +131,19 @@ app.get('/api/v1/content/', userMiddleware, async (req, res) => {
         content
     })
 })
-app.delete('/api/v1/content/', (req, res) => {
 
+app.delete('/api/v1/content/', userMiddleware, async (req, res) => {
+    const contentId = req.body.contentId
+
+    await ContentModel.deleteMany({
+        contentId,
+        //@ts-ignore
+        userId: req.userId
+    })
+
+    res.json({
+        msg: "content deleted"
+    })
 })
 app.delete('/api/v1/brain/share', (req, res) => {
 
