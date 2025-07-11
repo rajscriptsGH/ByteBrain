@@ -2,13 +2,14 @@ import express from 'express'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
-import { UserModel } from './db'
+import { ContentModel, UserModel } from './db'
 import dotenv from 'dotenv'
+import { JWT_SECRET } from './config'
+import { userMiddleware } from './middleware'
 
 dotenv.config()
 const app = express()
 app.use(express.json())
-const JWT_SECRET = process.env.JWT_SECRET || 'kjdshfjkshdfsf'
 
 const port = process.env.port || 3300
 
@@ -103,10 +104,24 @@ app.post('/api/v1/signin/', async (req, res) => {
         })
     }
 })
-app.post('/api/v1/content/', (req, res) => {
+app.post('/api/v1/content/', userMiddleware, async (req, res) => {
+    const link = req.body.link;
+    const type = req.body.type;
+
+    await ContentModel.create({
+        link,
+        type,
+        //@ts-ignore-
+        userId: req.userId,
+        tags: []
+    })
+
+    res.json({
+        msg: "content added"
+    })
 
 })
-app.get('/api/v1/content/', (req, res) => {
+app.get('/api/v1/content/', userMiddleware, (req, res) => {
 
 })
 app.delete('/api/v1/content/', (req, res) => {
