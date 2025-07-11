@@ -24,20 +24,17 @@ app.post('/api/v1/signup/', async (req, res) => {
 
     const userData = {
         username: username,
-        password: password
+        password: hashPassword
     }
 
     await UserModel.create({
         username: username,
-        password: password
+        password: hashPassword
     })
 
     res.status(502).json({
         msg: "Signed up"
     })
-
-
-
 })
 app.post('/api/v1/signin/', (req, res) => {
 
