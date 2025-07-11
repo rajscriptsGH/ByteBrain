@@ -1,9 +1,12 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 import { UserModel } from './db'
-const app = express()
 
-const port = process.env.MONGODB_URL || 3300
+dotenv.config()
+const app = express()
+const port = 3300
 
 app.use(express.json())
 
@@ -22,20 +25,24 @@ app.post('/api/v1/signup/', async (req, res) => {
     const salt = await bcrypt.genSalt(5);
     const hashPassword = await bcrypt.hash(password, salt);
 
-    const userData = {
-        username: username,
-        password: hashPassword
+    try {
+        await UserModel.create({
+            username: username,
+            password: hashPassword
+        })
+
+        res.status(201).json({
+            msg: "Signed up"
+        })
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error creating user",
+            error: error
+        })
     }
 
-    await UserModel.create({
-        username: username,
-        password: hashPassword
-    })
-
-    res.status(502).json({
-        msg: "Signed up"
-    })
 })
+
 app.post('/api/v1/signin/', (req, res) => {
 
 })
@@ -57,8 +64,8 @@ app.get('/api/v1/brain/:shareLink', (req, res) => {
 
 
 
+
+
 app.listen(port, () => {
     console.log(`Server is running at port: ${port}`);
-
-})
-
+});
