@@ -1,6 +1,5 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
-import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import { ContentModel, UserModel } from './db'
 import dotenv from 'dotenv'
