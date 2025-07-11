@@ -16,7 +16,7 @@ app.post('/api/v1/signup/', async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-        res.status(403).json({
+        return res.status(411).json({
             msg: "Wrong credentials"
         })
     }
@@ -31,14 +31,23 @@ app.post('/api/v1/signup/', async (req, res) => {
             password: hashPassword
         })
 
-        res.status(201).json({
+        return res.status(200).json({
             msg: "Signed up"
         })
-    } catch (error) {
-        res.status(500).json({
-            msg: "Error creating user",
-            error: error
-        })
+    } catch (err: any) {
+        if (err.code === 11000) {
+            // duplicate username
+            return res.status(409).json({
+                msg: "User already exists"
+            });
+        }
+
+        // Other unknown errors
+        console.error("Signup error:", err);
+        return res.status(500).json({
+            msg: "Something went wrong",
+            error: err.message
+        });
     }
 
 })
