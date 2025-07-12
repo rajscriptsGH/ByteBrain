@@ -4,7 +4,7 @@ import './App.css'
 function App() {
 
   return (
-    <div>ByteBrain Frontend</div>
+    <div className='bg-blue-300'>ByteBrain Frontend</div>
   )
 }
 
