@@ -17,6 +17,7 @@ const varientsStyle = {
   primary: "bg-purple-600 text-white",
   secondary: "bg-purple-300 text-purple-600 ",
 };
+
 const sizeStyle = {
   sm: "px-3 py-2",
   md: "px-5 py-3",
@@ -29,10 +30,10 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       className={`${varientsStyle[props.variant]} ${defaultStyle} ${
-        sizeStyle[props.size]
+        sizeStyle[props.size ?? 'md']
       }`}
     >
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         {props.startIcon}
         {props.text}
         {props.endIcon}
