@@ -27,5 +27,5 @@ const LinkShare = new Schema({
 })
 
 export const ContentModel = model("Content", ContentSchema)
-export const LinkModel = model("Content", LinkShare)
+export const LinkModel = model("Share", LinkShare)
 
