@@ -2,15 +2,17 @@
 import './App.css'
 import { Button } from './components/Button';
 import { PlusIcon } from './icons/PlusIcon';
+import { ShareIcon } from './icons/ShareIcon';
 
 function App() {
 
 
   return (
-    <>
-    <Button startIcon={<PlusIcon/>}  variant='primary' size='md' text='Share'></Button>
-    <Button variant='secondary' size='md' text='Add content'></Button>
-    </>
+    <div className='flex'>
+    <Button startIcon={<ShareIcon size={'lg'}/>}  variant='primary' size='md' text='Share'></Button>
+
+    <Button startIcon={<PlusIcon size='lg'/>} variant='secondary' size='md' text='Add content'></Button>
+    </div>
   );
 }
 
