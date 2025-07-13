@@ -166,12 +166,40 @@ app.delete('/api/v1/brain/share', userMiddleware, async (req, res) => {
     })
 
 })
-app.get('/api/v1/brain/:shareLink', (req, res) => {
+app.get('/api/v1/brain/:shareLink', async (req, res) => {
+    const hash = req.params.shareLink
 
+    //find the link form hash
+    const link = await LinkModel.findOne({
+        hash
+    })
+
+    if (!link) {
+        return res.status(411).json({
+            msg: "Invalid link"
+        })
+    }
+
+    //Fetch content & user details
+    const content = await ContentModel.find({
+        userId: link.userId
+    })
+
+    const user = await UserModel.findOne({
+        _id: link.userId
+    });
+
+    if (!user) {
+        return res.status(411).json({
+            msg: "User not found"
+        })
+    }
+    //if everything is fine, send username & content
+    res.json({
+        username: user.username,
+        content
+    })
 })
-
-
-
 
 
 app.listen(port, () => {
