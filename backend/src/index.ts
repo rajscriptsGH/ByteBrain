@@ -7,6 +7,7 @@ import { JWT_SECRET } from './config'
 import { userMiddleware } from './middleware'
 import { random } from './utils'
 
+
 dotenv.config()
 const app = express()
 app.use(express.json())
@@ -146,26 +147,50 @@ app.delete('/api/v1/content/', userMiddleware, async (req, res) => {
         msg: "content deleted"
     })
 })
-app.delete('/api/v1/brain/share', userMiddleware, async (req, res) => {
-    const share = req.body.share
-    if (share) {
-        await LinkModel.create({
-            //@ts-ignore
-            userId: req.userId,
-            hash: random(10)
-        })
-    } else {
-        await LinkModel.deleteOne({
-            //@ts-ignore
-            userId: req.userId
-        })
+app.post('/api/v1/brain/share', userMiddleware, async (req, res) => {
+    const share = req.body.share;
+    try {
+        if (share) {
+            //check if link already exits
+            const existingLink = await LinkModel.findOne({
+                //@ts-ignore
+                userId: req.userId
+            })
+            if (existingLink) {
+                return res.json({
+                    hash: existingLink.hash
+                })
+            }
+
+            //if not exists, create one
+            const hash = random(10)
+            await LinkModel.create({
+                //@ts-ignore
+                userId: req.userId,
+                hash
+            })
+
+            res.json({
+                msg: "Updated share link",
+                hash
+            })
+
+        } else {
+            await LinkModel.deleteOne({
+                //@ts-ignore
+                userId: req.userId
+            })
+
+            res.json({
+                msg: "Link removed"
+            })
+        }
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ msg: "Something went wrong" });
     }
-
-    res.json({
-        msg: "Updated share link"
-    })
-
 })
+
 app.get('/api/v1/brain/:shareLink', async (req, res) => {
     const hash = req.params.shareLink
 
