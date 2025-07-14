@@ -105,6 +105,7 @@ app.post('/api/v1/signin/', async (req, res) => {
         })
     }
 })
+
 app.post('/api/v1/content/', userMiddleware, async (req, res) => {
     const link = req.body.link;
     const type = req.body.type;
@@ -122,6 +123,7 @@ app.post('/api/v1/content/', userMiddleware, async (req, res) => {
     })
 
 })
+
 app.get('/api/v1/content/', userMiddleware, async (req, res) => {
     //@ts-ignore
     const userId = req.userId
@@ -147,6 +149,7 @@ app.delete('/api/v1/content/', userMiddleware, async (req, res) => {
         msg: "content deleted"
     })
 })
+
 app.post('/api/v1/brain/share', userMiddleware, async (req, res) => {
     const share = req.body.share;
     try {
