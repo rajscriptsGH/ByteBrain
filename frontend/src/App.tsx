@@ -9,9 +9,9 @@ function App() {
 
   return (
     <div className='flex'>
-    <Button startIcon={<ShareIcon size={'lg'}/>}  variant='primary' size='md' text='Share'></Button>
+    <Button startIcon={<ShareIcon size={'lg'}/>}  variant='secondary' size='md' text='Share'></Button>
 
-    <Button startIcon={<PlusIcon size='lg'/>} variant='secondary' size='md' text='Add content'></Button>
+    <Button startIcon={<PlusIcon size='lg'/>} variant='primary' size='md' text='Add content'></Button>
     </div>
   );
 }
