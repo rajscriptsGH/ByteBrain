@@ -16,16 +16,20 @@ function App() {
         <Button startIcon={<PlusIcon size='lg' />} variant='primary' size='md' text='Add content'></Button>
       </div>
 
-      <div className='flex justify-around items-center'>
+      <div className='flex justify-around items-center flex-col sm:flex-row flex-wrap'>
         <Card
           title='Cracked US Startup'
           link='https://www.youtube.com/watch?v=-bLHgQqkTHk'
-          type='youtube' />
+          type='youtube'
+          detail='Video about 100xDev success story'
+        />
 
         <Card
           title='My Intro on X'
           link='https://x.com/rajscriptsX/status/1944876307403207116'
-          type='twitter' />
+          type='twitter'
+          detail='Video about 100xDev success story'
+        />
       </div>
 
 

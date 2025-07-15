@@ -5,6 +5,7 @@ interface CardProps {
   title: string;
   link: string;
   type: "twitter" | "youtube";
+  detail: string;
 }
 
 function getYouTubeEmbedUrl(url: string): string {
@@ -27,7 +28,7 @@ function getYouTubeEmbedUrl(url: string): string {
 }
 
 
-export const Card = ({ title, link, type }: CardProps) => {
+export const Card = ({ title, link, type, detail }: CardProps) => {
   const twitterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,8 +37,11 @@ export const Card = ({ title, link, type }: CardProps) => {
     }
   }, [type, link]);
 
+
+  const normalizedLink = link.replace("x.com", "twitter.com");
+
   return (
-    <div className="flex justify-between flex-col  border border-slate-300 min-w-72 min-h-96 rounded-lg mx-5 my-5 py-3 px-5 shadow-md">
+    <div className="flex justify-between flex-col  border border-slate-300 min-w-72 rounded-lg mt-10 mx-5 my-5 py-3 px-5 shadow-md">
 
       {/* Header section */}
       <div className="flex justify-between">
@@ -52,10 +56,10 @@ export const Card = ({ title, link, type }: CardProps) => {
       </div>
 
       {/* content section */}
-      <div className="w-full mt-5 mb-5">
+      <div className="w-full h-80 mt-5 mb-12">
         {type === "youtube" && (
           <iframe
-            className="rounded-2xl min-h-60 w-full"
+            className="rounded-2xl min-h-80 w-full mt-5"
             src={getYouTubeEmbedUrl(link)}
             title="YouTube video player"
             frameBorder="0"
@@ -68,15 +72,17 @@ export const Card = ({ title, link, type }: CardProps) => {
         {type === "twitter" && (
           <div ref={twitterRef}>
 
-            <blockquote className="X tweet">
-              <a href={link}></a>
+            <blockquote className="twitter-tweet">
+              <a href={normalizedLink}></a>
             </blockquote>
           </div>
         )}
       </div>
 
       {/* Footer section */}
-      <div>{type}</div>
+      <div>
+        {detail}
+      </div>
     </div>
   );
 };
