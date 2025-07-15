@@ -3,9 +3,8 @@
 import { iconSizeVariants, type IconsProps } from "."
 
 
-export const ShareIcon = (props: IconsProps) => {
-    return
-    <svg id="Layer_1"
+export const LinkIcon = (props: IconsProps) => {
+    return <svg id="Layer_1"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 122.88 122.88"

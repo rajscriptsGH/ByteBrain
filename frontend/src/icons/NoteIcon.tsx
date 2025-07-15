@@ -2,8 +2,7 @@ import { iconSizeVariants, type IconsProps } from "."
 
 
 export const NoteIcon = (props: IconsProps) => {
-    return
-    <svg
+    return <svg
         xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality"
         fillRule="evenodd"
         clipRule="evenodd"

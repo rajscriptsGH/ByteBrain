@@ -2,8 +2,7 @@ import { iconSizeVariants, type IconsProps } from "."
 
 
 export const YouTubeIcon = (props: IconsProps) => {
-    return
-    <svg
+    return <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 333333 333333" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality"
         fill-rule="evenodd"
