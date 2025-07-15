@@ -6,11 +6,12 @@ import { TwitterIcon } from "../icons/TwitterIcon";
 import { NoteIcon } from "../icons/NoteIcon";
 import { LinkIcon } from "../icons/LinkIcon";
 import { PlusIcon } from "../icons/PlusIcon";
+// import { NotionIcon } from "../icons/NotionIcon";
 
 interface CardProps {
   title: string;
   link: string;
-  type: "twitter" | "youtube" | "note" | "links";
+  type: "twitter" | "youtube" | "note" | "links" | "notion";
   detail?: string;
 }
 
@@ -41,6 +42,7 @@ export const Card = ({ title, link, type, detail }: CardProps) => {
     youtube: <YouTubeIcon size="lg" />,
     twitter: <TwitterIcon size="lg" />,
     note: <NoteIcon size="lg" />,
+    // notion: <NotionIcon size="lg" />,
     links: <LinkIcon size="lg" />,
     share: <ShareIcon size="lg" />,
     delete: <DeleteIcon size="lg" />,
@@ -93,7 +95,6 @@ export const Card = ({ title, link, type, detail }: CardProps) => {
             </blockquote>
           </div>
         )}
-
 
         {type === "note" && (
           <div className="p-3 h-full border border-slate-200 rounded-lg bg-slate-300 text-sm text-gray-700">
