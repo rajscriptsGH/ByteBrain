@@ -10,13 +10,13 @@ function App() {
 
   return (
     <>
-    <div className='flex'>
+    <div className='flex justify-end items-end mt-5 mr-10'>
     <Button startIcon={<ShareIcon size={'lg'}/>}  variant='secondary' size='md' text='Share'></Button>
 
     <Button startIcon={<PlusIcon size='lg'/>} variant='primary' size='md' text='Add content'></Button>
     </div>
 
-    <div>
+    <div className='flex justify-around items-center'>
       <Card/>
     </div>
 
