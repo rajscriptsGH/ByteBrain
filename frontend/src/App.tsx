@@ -11,10 +11,10 @@ function App() {
 
   return (
     <div className='h-screen '>
-        <CreateContentModel open={modelOpen} onClose={() => {
-          setModelOpen(false)
-        }} />
-    
+      <CreateContentModel open={modelOpen} onClose={() => {
+        setModelOpen(false)
+      }} />
+
       <div className='flex justify-end items-end mt-5 mr-10 h-auto'>
         <Button startIcon={<ShareIcon size={'lg'} />} variant='secondary' size='md' text='Share'></Button>
 
@@ -30,26 +30,18 @@ function App() {
         />
 
         <Card
+          title='Cracked US Startup'
+          link='https://www.youtube.com/watch?v=-bLHgQqkTHk'
+          type='youtube'
+          detail='Video about 100xDev success story'
+        />
+        <Card
           title='Notion ToDos'
           link='https://www.notion.so/ToDos-App-d270cea6af3244248ac6cdd0129a87b6?source=copy_link'
           type='note'
           detail='Notion Docs of my TODos'
         />
 
-
-        <Card
-          title='My Intro on X'
-          link='https://x.com/rajscriptsX/status/1944876307403207116'
-          type='twitter'
-          detail='Video about 100xDev success story'
-        />
-
-        <Card
-          title='Cracked US Startup'
-          link='https://www.youtube.com/watch?v=-bLHgQqkTHk'
-          type='youtube'
-          detail='Video about 100xDev success story'
-        />
 
 
       </div>
