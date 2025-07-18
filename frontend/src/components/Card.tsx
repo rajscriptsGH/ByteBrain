@@ -59,7 +59,7 @@ export const Card = ({ title, link, type }: CardProps) => {
   const normalizedLink = link.replace("x.com", "twitter.com");
 
   return (
-    <div className="flex justify-start flex-col  border border-slate-300 h-auto w-80 overflow-hidden rounded-lg mt-5 ml-5 my-5 py-3 px-5 shadow-md">
+    <div className="flex justify-around flex-col  border border-slate-300 h-auto w-80 overflow-hidden rounded-lg mt-5 ml-5 my-5 py-3 px-5 shadow-md">
 
       {/* Header section */}
       <div className="flex justify-between">
