@@ -11,16 +11,14 @@ function App() {
 
   return (
     <div className='h-screen '>
+        <CreateContentModel open={modelOpen} onClose={() => {
+          setModelOpen(false)
+        }} />
+    
       <div className='flex justify-end items-end mt-5 mr-10 h-auto'>
         <Button startIcon={<ShareIcon size={'lg'} />} variant='secondary' size='md' text='Share'></Button>
 
         <Button startIcon={<PlusIcon size='lg' />} variant='primary' size='md' text='Add content'></Button>
-      </div>
-
-      <div>
-        <CreateContentModel open={modelOpen} onClose={() => {
-          setModelOpen(false)
-        }} />
       </div>
 
       <div className='flex justify-around items-center flex-col sm:flex-row flex-wrap'>
