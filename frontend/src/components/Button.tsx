@@ -29,9 +29,9 @@ const defaultStyle = "rounded-md font-normal m-2";
 export const Button = (props: ButtonProps) => {
   return (
     <button
-      className={`${varientsStyle[props.variant]} ${defaultStyle} ${
-        sizeStyle[props.size ?? 'md']
-      }`}
+      onClick={props.onClick}
+      className={`${varientsStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size ?? 'md']
+        }`}
     >
       <div className="flex items-center gap-2">
         {props.startIcon}
@@ -43,5 +43,5 @@ export const Button = (props: ButtonProps) => {
 };
 
 {
-  <Button variant="primary" size="md" onClick={() => {}} text={"asd"} />;
+  <Button variant="primary" size="md" onClick={() => { }} text={"asd"} />;
 }
