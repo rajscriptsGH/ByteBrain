@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { Button } from './components/Button';
 import { PlusIcon } from './icons/PlusIcon';
 import { ShareIcon } from './icons/ShareIcon';
 import { Card } from './components/Card';
 import './index.css'
 import { CreateContentModel } from './components/CreateContentModel';
-import { useState } from 'react';
 
 function App() {
   const [modelOpen, setModelOpen] = useState(false)
