@@ -7,7 +7,7 @@ import { CreateContentModel } from './components/CreateContentModel';
 import { useState } from 'react';
 
 function App() {
-  const [modelOpen, setModelOpen] = useState(true)
+  const [modelOpen, setModelOpen] = useState(false)
 
   return (
     <div className='h-screen '>
@@ -18,7 +18,11 @@ function App() {
       <div className='flex justify-end items-end mt-5 mr-10 h-auto'>
         <Button startIcon={<ShareIcon size={'lg'} />} variant='secondary' size='md' text='Share'></Button>
 
-        <Button startIcon={<PlusIcon size='lg' />} variant='primary' size='md' text='Add content'></Button>
+        <Button
+          onClick={() => {
+            setModelOpen(true)
+          }}
+          startIcon={<PlusIcon size='lg' />} variant='primary' size='md' text='Add content'></Button>
       </div>
 
       <div className='flex justify-around items-center flex-col sm:flex-row flex-wrap'>
