@@ -35,7 +35,7 @@ function getYouTubeEmbedUrl(url: string): string {
 }
 
 
-export const Card = ({ title, link, type, detail }: CardProps) => {
+export const Card = ({ title, link, type }: CardProps) => {
   const twitterRef = useRef<HTMLDivElement>(null);
 
   const iconMap = {
@@ -59,7 +59,7 @@ export const Card = ({ title, link, type, detail }: CardProps) => {
   const normalizedLink = link.replace("x.com", "twitter.com");
 
   return (
-    <div className="flex justify-between flex-col  border border-slate-300 w-96 overflow-hidden rounded-lg mt-5 ml-5 my-5 py-3 px-5 shadow-md">
+    <div className="flex justify-start flex-col  border border-slate-300 h-auto w-80 overflow-hidden rounded-lg mt-5 ml-5 my-5 py-3 px-5 shadow-md">
 
       {/* Header section */}
       <div className="flex justify-between">
@@ -74,10 +74,10 @@ export const Card = ({ title, link, type, detail }: CardProps) => {
       </div>
 
       {/* content section */}
-      <div className="w-full h-80 mt-2 mb-10">
+      <div className="w-full h-80 mt-2 mb-2">
         {type === "youtube" && (
           <iframe
-            className="rounded-2xl min-h-80 w-full mt-5"
+            className="rounded-2xl min-h-72 w-full mt-5"
             src={getYouTubeEmbedUrl(link)}
             title="YouTube video player"
             frameBorder="0"
@@ -101,14 +101,6 @@ export const Card = ({ title, link, type, detail }: CardProps) => {
             <p className="break-words">{link}</p>
           </div>
         )}
-
-
-
-      </div>
-
-      {/* Footer section */}
-      <div>
-        {detail}
       </div>
     </div>
   );
