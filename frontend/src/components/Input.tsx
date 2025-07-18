@@ -12,7 +12,6 @@ export function Input({ placeholder }: InputProps) {
                 className="px-6 py-3 border rounded-lg outline-none"
                 type="text"
                 placeholder={placeholder}
-
             />
         </div>
     )
