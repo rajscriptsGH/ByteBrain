@@ -44,12 +44,7 @@ function App() {
             type='youtube'
             detail='Video about 100xDev success story'
           />
-          <Card
-            title='Cracked US Startup'
-            link='https://www.youtube.com/watch?v=-bLHgQqkTHk'
-            type='youtube'
-            detail='Video about 100xDev success story'
-          />
+
           <Card
             title='Notion ToDos'
             link='https://www.notion.so/ToDos-App-d270cea6af3244248ac6cdd0129a87b6?source=copy_link'
