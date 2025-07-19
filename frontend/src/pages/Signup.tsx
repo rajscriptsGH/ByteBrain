@@ -7,18 +7,15 @@ import { BACKEND_URL } from "../config";
 
 
 export const Signup = () => {
-    const emailRef = useRef<HTMLInputElement>(null)
     const usernameRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)
 
     async function signup() {
-        const email = emailRef.current?.value
         const username = usernameRef.current?.value
         const password = passwordRef.current?.value
 
         try {
             await axios.post(`${BACKEND_URL}/api/v1/signup`, {
-                email,
                 username,
                 password,
             });
@@ -28,6 +25,7 @@ export const Signup = () => {
             console.error(err);
         }
     }
+    window.location.href = "/signin";
 
     return <div className="h-screen w-full flex justify-center items-center">
         <div className="relative flex flex-col items-center justify-center rounded-xl bg-slate-300 h-96 w-80">
@@ -35,8 +33,7 @@ export const Signup = () => {
                 <CrossIcon size="lg" />
             </div>
             <div className="flex flex-col justify-center gap-5 mb-2">
-                <Input type="text" reference={usernameRef} placeholder="Full name" />
-                <Input type="email" reference={emailRef} placeholder="Email" />
+                <Input type="text" reference={usernameRef} placeholder="Username" />
                 <Input type="passowrd" reference={passwordRef} placeholder="Password" />
                 <Button onClick={signup} loading={false} variant="primary" text="Signup" />
             </div>
