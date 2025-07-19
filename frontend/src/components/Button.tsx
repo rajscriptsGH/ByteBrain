@@ -30,8 +30,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       onClick={props.onClick}
-      className={`${varientsStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size ?? 'md']
-        } flex justify-center text-center`}
+      className={`${varientsStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size ?? 'md']} flex justify-center ${props.loading ? "opacity-50 cursor-not-allowed" : ""}`}
     >
       <div className="flex items-center gap-2">
         {props.startIcon}
