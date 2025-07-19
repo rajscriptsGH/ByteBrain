@@ -15,6 +15,7 @@ function Dashboard() {
       <div>
         <Sidebar />
       </div>
+
       <div>
         <CreateContentModel open={modelOpen} onClose={() => {
           setModelOpen(false)
