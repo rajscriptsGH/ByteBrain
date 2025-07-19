@@ -11,7 +11,7 @@ function Dashboard() {
   const [modelOpen, setModelOpen] = useState(false)
 
   return (
-    <div className='h-screen flex '>
+    <div className='h-screen flex justify-center lg:justify-normal '>
       <div>
         <Sidebar />
       </div>
