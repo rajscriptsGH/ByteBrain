@@ -6,11 +6,13 @@ import dotenv from 'dotenv'
 import { JWT_SECRET } from './config'
 import { userMiddleware } from './middleware'
 import { random } from './utils'
+import cors from 'cors'
 
 
 dotenv.config()
 const app = express()
 app.use(express.json())
+app.use(cors)
 
 const port = process.env.port || 3300
 
