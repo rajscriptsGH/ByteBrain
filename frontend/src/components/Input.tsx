@@ -1,18 +1,20 @@
+import type { RefObject } from "react";
 
 
 interface InputProps {
     placeholder: string;
-    reference?: any
+    reference?: RefObject<HTMLInputElement>;
+    type: string;
 }
 
-export function Input({ placeholder, reference }: InputProps) {
+export function Input({ placeholder, reference, type }: InputProps) {
     return (
         <div>
             <input
                 className="px-6 py-3 border rounded-lg outline-none"
-                type="text"
                 placeholder={placeholder}
                 ref={reference}
+                type={type}
             />
         </div>
     )

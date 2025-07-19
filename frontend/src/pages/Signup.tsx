@@ -17,14 +17,15 @@ export const Signup = () => {
         const password = passwordRef.current?.value
 
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/v1/signup`, {
+            await axios.post(`${BACKEND_URL}/api/v1/signup`, {
                 email,
                 username,
-                password
+                password,
             });
-            console.log("Signup success:", response.data);
-        } catch (error) {
-            console.error("Signup failed:", error);
+            alert("You are signed up!");
+        } catch (err) {
+            alert("Signup failed. Please try again.");
+            console.error(err);
         }
     }
 
@@ -34,9 +35,9 @@ export const Signup = () => {
                 <CrossIcon size="lg" />
             </div>
             <div className="flex flex-col justify-center gap-5 mb-2">
-                <Input reference={usernameRef} placeholder="Full name" />
-                <Input reference={emailRef} placeholder="Email" />
-                <Input reference={passwordRef} placeholder="Password" />
+                <Input type="text" reference={usernameRef} placeholder="Full name" />
+                <Input type="email" reference={emailRef} placeholder="Email" />
+                <Input type="passowrd" reference={passwordRef} placeholder="Password" />
                 <Button onClick={signup} loading={false} variant="primary" text="Signup" />
             </div>
             <p>

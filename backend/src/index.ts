@@ -14,7 +14,7 @@ const app = express()
 app.use(express.json())
 app.use(cors)
 
-const port = process.env.port || 3300
+const port = process.env.port || 3000
 
 
 //signup route
