@@ -13,7 +13,7 @@ export const Signup = () => {
                 <Input placeholder="Full name" />
                 <Input placeholder="Email" />
                 <Input placeholder="Password" />
-                <Button variant="primary" text="Signup" />
+                <Button loading={false} variant="primary" text="Signup" />
             </div>
             <p>
                 Already have an account
