@@ -1,9 +1,7 @@
-import type { RefObject } from "react";
-
 
 interface InputProps {
     placeholder: string;
-    reference?: RefObject<HTMLInputElement>;
+    reference?: React.RefObject<HTMLInputElement>;
     type: string;
 }
 
