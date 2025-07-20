@@ -1,5 +1,3 @@
-
-import { useState } from "react"
 import { BrainIcon } from "../../icons/BrainIcon"
 import { Button } from "../Button"
 import { useNavigate } from "react-router-dom"
