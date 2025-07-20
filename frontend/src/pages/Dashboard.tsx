@@ -13,7 +13,7 @@ function Dashboard() {
   const contents = useContent()
 
   return (
-    <div className='h-screen flex justify-center lg:justify-normal bg-slate-200 '>
+    <div className='h-screen flex justify-center lg:justify-normal'>
       <div>
         <Sidebar />
       </div>
