@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { BrainIcon } from "../icons/BrainIcon"
 import { LinkIcon } from "../icons/LinkIcon"
 import { NoteIcon } from "../icons/NoteIcon"
@@ -9,9 +10,14 @@ import { SidebarContent } from "./SidebarItem"
 
 
 export const Sidebar = () => {
+    const navigate = useNavigate()
     return (
         <div className="hidden lg:block sm:h-screen sm:w-80  border-r-2 border-slate-300">
-            <div className="flex items-center justify-center mt-5 mb-10">
+            <div
+                onClick={() => {
+                    navigate('/')
+                }}
+                className="flex items-center justify-center mt-5 mb-10 cursor-pointer">
                 <BrainIcon size="xl" />
                 <h1 className="text-4xl font-semibold ml-3">ByteBrain</h1>
             </div>
