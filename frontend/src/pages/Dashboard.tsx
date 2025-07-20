@@ -7,10 +7,14 @@ import '../index.css'
 import { CreateContentModel } from '../components/CreateContentModel';
 import { Sidebar } from '../components/Sidebar';
 import { useContent } from '../hooks/UserContent';
+import axios from 'axios';
+import { BACKEND_URL } from '../config';
 
 function Dashboard() {
   const [modelOpen, setModelOpen] = useState(false)
   const contents = useContent()
+  const token = localStorage.getItem("token");
+
 
   return (
     <div className='h-screen flex justify-center lg:justify-normal '>
@@ -24,7 +28,34 @@ function Dashboard() {
         }} />
 
         <div className='flex justify-end items-end mt-5 mr-10 h-auto'>
-          <Button startIcon={<ShareIcon size={'lg'} />} variant='secondary' size='md' text='Share'></Button>
+          <Button
+            onClick={async () => {
+              if (!token) {
+                alert("You're not logged in");
+                return;
+              }
+              try {
+                const response = await axios.post(`${BACKEND_URL}/api/v1/brain/share`, {
+                  share: true
+                }, {
+                  headers: {
+                    Authorization: `Bearer ${token}`
+                  }
+                });
+
+                const shareUrl = `http://localhost:5173/share/${response.data.hash}`
+                await navigator.clipboard.writeText(shareUrl)
+                alert("Copied to clipboard!");
+              } catch (error) {
+                console.error("Share failed:", error);
+                alert("Failed to generate share link");
+              }
+            }}
+            startIcon={<ShareIcon size={'lg'} />}
+            variant='secondary'
+            size='md'
+            text='Share'>
+          </Button>
 
           <Button
             onClick={() => {
