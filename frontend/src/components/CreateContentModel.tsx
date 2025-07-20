@@ -10,7 +10,6 @@ interface CreateContentModelProps {
     onClose: () => void;
 }
 
-
 export const CreateContentModel = ({ open, onClose }: CreateContentModelProps) => {
     const titleRef = useRef<HTMLInputElement>(null)
     const linkRef = useRef<HTMLInputElement>(null)
@@ -23,6 +22,8 @@ export const CreateContentModel = ({ open, onClose }: CreateContentModelProps) =
         const type = typeRef.current?.value
         const details = detailsRef.current?.value
 
+        const token = localStorage.getItem("token");
+
         await axios.post(`${BACKEND_URL}/api/v1/content`, {
             title,
             link,
@@ -30,11 +31,10 @@ export const CreateContentModel = ({ open, onClose }: CreateContentModelProps) =
             details
         }, {
             headers: {
-                "Authorization": localStorage.getItem("token")
+                Authorization: `Bearer ${token}`
             }
         })
-
-
+        onClose();
     }
     return <div className="flex justify-center items-center lg:ml-80">
         {open && (
