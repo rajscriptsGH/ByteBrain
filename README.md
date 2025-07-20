@@ -7,13 +7,11 @@
 ## 🚀 Features
 
 - 📝 Create, edit, and delete notes
-- 🧠 Tag-based organization
 - 🔍 Full-text search
-- 🌙 Dark mode support
 - 🧩 Markdown support
 - 🔐 Authentication (JWT-based)
 - 📁 Folder and hierarchy support (coming soon)
-- 🤖 AI-powered suggestions (future roadmap)
+<!-- - 🤖 AI-powered suggestions (future roadmap) -->
 
 ---
 
