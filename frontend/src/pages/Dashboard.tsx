@@ -6,9 +6,11 @@ import { Card } from '../components/Card';
 import '../index.css'
 import { CreateContentModel } from '../components/CreateContentModel';
 import { Sidebar } from '../components/Sidebar';
+import { useContent } from '../hooks/UserContent';
 
 function Dashboard() {
   const [modelOpen, setModelOpen] = useState(false)
+  const contents = useContent()
 
   return (
     <div className='h-screen flex justify-center lg:justify-normal '>
@@ -38,20 +40,14 @@ function Dashboard() {
             type='twitter'
             detail=''
           />
-
-          <Card
-            title='Cracked US Startup'
-            link='https://www.youtube.com/watch?v=-bLHgQqkTHk'
-            type='youtube'
-            detail='Video about 100xDev success story'
-          />
-
-          <Card
-            title='Notion ToDos'
-            link='https://www.notion.so/ToDos-App-d270cea6af3244248ac6cdd0129a87b6?source=copy_link'
-            type='note'
-            detail='Notion Docs of my TODos'
-          />
+          {contents.map(({ title, link, type, detail }) =>
+            <Card
+              title={title}
+              link={link}
+              type={type}
+              detail={detail}
+            />
+          )}
         </div>
       </div>
     </div>
