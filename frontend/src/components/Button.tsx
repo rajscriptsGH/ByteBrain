@@ -21,7 +21,7 @@ const varientsStyle = {
 const sizeStyle = {
   sm: "px-3 py-2",
   md: "px-5 py-3",
-  lg: "px-8 py-4",
+  lg: "px-7 py-4",
 };
 
 const defaultStyle = "rounded-md font-normal m-2";
@@ -30,7 +30,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       onClick={props.onClick}
-      className={`${varientsStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size ?? 'md']} flex justify-center ${props.loading ? "opacity-50 cursor-not-allowed" : ""}`}
+      className={`${varientsStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size ?? 'md']} flex justify-center ${props.loading ? "opacity-50 cursor-not-allowed" : ""} hover:bg-blue-600 transition-all hover:duration-300 hover:scale-105`}
     >
       <div className="flex items-center gap-2">
         {props.startIcon}
