@@ -9,10 +9,12 @@ import { PlusIcon } from "../icons/PlusIcon";
 import { NotionIcon } from "../icons/NotionIcon";
 
 interface CardProps {
+  id: string;
   title: string;
   link: string;
   type: "twitter" | "youtube" | "note" | "links" | "notion";
   detail?: string;
+  onDelete: (id: string) => void;
 }
 
 function getYouTubeEmbedUrl(url: string): string {
@@ -35,7 +37,7 @@ function getYouTubeEmbedUrl(url: string): string {
 }
 
 
-export const Card = ({ title, link, type }: CardProps) => {
+export const Card = ({ title, link, type, id, onDelete }: CardProps) => {
   const twitterRef = useRef<HTMLDivElement>(null);
 
   const iconMap = {
@@ -69,12 +71,15 @@ export const Card = ({ title, link, type }: CardProps) => {
         </div>
         <div className="flex gap-3">
           <ShareIcon size="lg" />
-          <DeleteIcon size="lg" />
+          <div onClick={() => onDelete(id)} className="cursor-pointer hover:text-red-600">
+            <DeleteIcon size="lg" />
+          </div>
         </div>
+
       </div>
 
       {/* content section */}
-      <div className="w-full h-80 mt-2 mb-2">
+      <div className="w-full h-auto mt-2 mb-2">
         {type === "youtube" && (
           <iframe
             className="rounded-2xl min-h-72 w-full mt-5"
