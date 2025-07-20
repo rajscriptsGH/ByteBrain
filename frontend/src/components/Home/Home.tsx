@@ -1,10 +1,13 @@
+
 import { Button } from "../Button";
 import { Navbar } from "./Navbar";
 
 export const Home = () => {
     return (
         <div className="bg-blue-300 min-h-screen w-full flex flex-col">
-            <Navbar />
+            <div>
+                <Navbar />
+            </div>
             <div className="flex flex-col justify-center items-center flex-1 px-6">
                 <h1 className="text-5xl lg:text-6xl font-bold text-center mt-5">
                     Welcome to <span className="text-orange-600">ByteBrain</span>
