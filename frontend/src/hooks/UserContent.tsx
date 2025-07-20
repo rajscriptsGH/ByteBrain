@@ -5,14 +5,15 @@ import { BACKEND_URL } from "../config";
 export function useContent() {
     const [contents, setContents] = useState([])
 
+    const token = localStorage.getItem("token");
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/contnent`, {
+        axios.get(`${BACKEND_URL}/api/v1/content`, {
             headers: {
-                'Authorization': localStorage.getItem("token")
+                Authorization: `Bearer ${token}`,
             }
         })
             .then((response) => {
-                setContents(response.data.components)
+                setContents(response.data.content)
             })
     }, [])
 
