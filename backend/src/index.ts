@@ -14,7 +14,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const port = process.env.port || 3000
+const PORT = process.env.PORT || 3000
 
 
 //signup route
@@ -232,6 +232,6 @@ app.get('/api/v1/brain/:shareLink', async (req, res) => {
 })
 
 
-app.listen(port, () => {
-    console.log(`Server is running at port: ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running at port: ${PORT}`);
 });

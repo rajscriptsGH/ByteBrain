@@ -40,8 +40,9 @@ function Dashboard() {
             type='twitter'
             detail=''
           />
-          {contents.map(({ title, link, type, detail }) =>
+          {contents.map(({ title, link, type, detail, content }) =>
             <Card
+              key={content}
               title={title}
               link={link}
               type={type}
