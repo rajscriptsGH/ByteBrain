@@ -42,7 +42,8 @@ export const Signup = () => {
             <div className="flex flex-col justify-center gap-5 mb-2">
                 <Input type="text" reference={usernameRef} placeholder="Username" />
                 <Input type="passowrd" reference={passwordRef} placeholder="Password" />
-                <Button onClick={signup} loading={false} variant="primary" text="Signup" />
+                <Button onClick={signup}
+                    loading={false} variant="primary" text="Signup" />
             </div>
             <p>
                 Already have an account
